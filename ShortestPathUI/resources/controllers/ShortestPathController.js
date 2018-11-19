@@ -9,18 +9,30 @@ app.controller("ShortestPathController", function($scope,$ngBootbox,$http,$windo
 			"10 3 0 6 20\n" +
 			"19 7 6 0 4\n" +
 			"8 2 20 4 0\n" +
-			"Enter the origin city: (Starts from 0)\n" +
-			"0\n\n" +
+			"Enter the origin city: (Starts from 1)\n" +
+			"1\n\n" +
 			"Output:\n" +
-			"Route: [0, 2, 1, 3, 4, 0]\n" +
+			"Route: [1, 2, 5, 3, 4, 1]\n" +
 			"Distance: 32.0" 
 	var config = { headers : {  'Content-Type': 'application/json ;charset=utf-8;'   } }
-	  $scope.findroute= function(){
-		  if(!($scope.shortest.number<=2) && ($scope.shortest.origin<$scope.shortest.number)){
+	  $scope.findPath= function(){
+		  if(!($scope.shortest.number<=2)){
 		  
-		  $http.post("http://localhost:8085/v1/shortest",$scope.shortest)
-          .success(function (response){    
-        	  $scope.result=response.result;
+			  if($scope.shortest.edgeWeights != "" && $scope.shortest.edgeWeights != undefined){
+				  
+				  var edgeweights= $scope.shortest.edgeWeights.split('\n');
+				  var combineWeights="";
+				  for(i=0;i<edgeweights.length;i++){
+					  combineWeights+=edgeweights[i]+" ";
+				  }
+				  console.log("combineWeights===>"+combineWeights);
+				  $scope.shortest.edgeWeights=combineWeights;
+			  }
+			  
+		  $http.post("http://localhost:8089/short",$scope.shortest)
+          .success(function (response){  
+        	 
+        	  $scope.result="Best Route & Distance::"+response.result;
           })
           .error(function (response){
           });

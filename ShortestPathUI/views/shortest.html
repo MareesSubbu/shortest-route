@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shortest Route</title>
+  <title>Shortest Path</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel = "stylesheet" type = "text/css" href = "/css/shortest.css">
+  <link rel="stylesheet" src=""">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body ng-app="ShortestPathApp" ng-controller="ShortestPathController" style="background:#F4F4F4;font-family: Gravur;margin:0 auto;background-image: url('./bg.png');background-repeat: no-repeat;">
+<body ng-app="ShortestPathApp" ng-controller="ShortestPathController" style="background:#F4F4F4;font-family: Gravur;margin:0 auto;background-image: url('./bg.jpg');background-repeat: no-repeat;background-position: top; background-size: cover;">
+<h1><center>Optimal Path Between Different Cities</center></h1>
+</body>
 
 <div class="container">
   <form action="">
   <div class="row" style="margin-top:4em;">
   <div class="col-md-3">
   <div class="panel panel-info">
-<div class="panel-body"><h2 class="text-primary">Sample Data</h2>
+<div class="panel-body"><h2 class="text-primary">Sample Input Format</h2>
     <div class="form-group">
       <textarea rows="20" cols="50" readonly  ng-model="demo" class="form-control"></textarea>
     </div>
@@ -27,21 +30,21 @@
 </div>
   <div class="col-md-offset-1 col-md-4">
   <div class="panel panel-info">
-  <div class="panel-body"><h2 class="text-primary">Shortest Route</h2>
+  <div class="panel-body"><h2 class="text-primary">Shortest Path</h2>
     <div class="form-group">
       <label>Enter number of cities:</label>
-      <input type="text" ng-model="shortest.number" class="form-control">
+      <input type="text" ng-model="shortest.numberOfCities" class="form-control">
     </div>
     <div class="form-group">
       <label for="Enter Floor">Enter distance between cities:</label>
-      <textarea rows="5" cols="30"  ng-model="shortest.distance" class="form-control"></textarea>
+      <textarea rows="5" cols="30"  ng-model="shortest.edgeWeights" class="form-control"></textarea>
     </div>
 	<div class="form-group">
-      <label for="Enter Slot">Enter the origin city: (Starts from 0)</label>
-      <input type="text"  ng-model="shortest.origin" class="form-control">
+      <label for="Enter Slot">Enter the origin city: (Starts from 1)</label>
+      <input type="text"  ng-model="shortest.orgin" class="form-control">
     </div>
 	<div align="center">
-	<button ng-click="findroute()" type="button" class="btn btn-primary">Find Route</button>
+	<button ng-click="findPath()" type="button" class="btn btn-primary">Find Path</button>
 	</div>
 	</div>
 </div>
@@ -70,8 +73,8 @@
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/angular/angular.js"></script>
 <script src="ngmodules/angular-route.js"></script>
-<script src="controllers/ShortestRouteApp.js"></script>
-<script src="controllers/ShortestRouteController.js"></script>
+<script src="controllers/ShortestPathApp.js"></script>
+<script src="controllers/ShortestPathController.js"></script>
 <script src="lib/bootstrap/bootbox.js"></script>
 <script src="lib/bootstrap/ngBootbox.js"></script>
 
