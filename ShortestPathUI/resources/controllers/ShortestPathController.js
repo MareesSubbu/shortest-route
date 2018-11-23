@@ -16,7 +16,7 @@ app.controller("ShortestPathController", function($scope,$ngBootbox,$http,$windo
 			"Distance: 32.0" 
 	var config = { headers : {  'Content-Type': 'application/json ;charset=utf-8;'   } }
 	  $scope.findPath= function(){
-		  if(!($scope.shortest.number<=2)){
+		  if(!($scope.shortest.numberOfCities<=2)){
 		  
 			  if($scope.shortest.edgeWeights != "" && $scope.shortest.edgeWeights != undefined){
 				  
@@ -25,7 +25,7 @@ app.controller("ShortestPathController", function($scope,$ngBootbox,$http,$windo
 				  for(i=0;i<edgeweights.length;i++){
 					  combineWeights+=edgeweights[i]+" ";
 				  }
-				  console.log("combineWeights===>"+combineWeights);
+				  //console.log("combineWeights===>"+combineWeights);
 				  $scope.shortest.edgeWeights=combineWeights;
 			  }
 			  
@@ -33,6 +33,9 @@ app.controller("ShortestPathController", function($scope,$ngBootbox,$http,$windo
           .success(function (response){  
         	 
         	  $scope.result="Best Route & Distance::"+response.result;
+        	  
+        	       	  
+        	  //console.log($scope.tableData);
           })
           .error(function (response){
           });
@@ -46,5 +49,19 @@ app.controller("ShortestPathController", function($scope,$ngBootbox,$http,$windo
 		  
 
       };
+      
+      $http.get("http://localhost:8089/short")
+      .success(function (response){  
+    	 
+    	  $scope.data=response;
+    	  
+    	       	  
+    	  //console.log($scope.tableData);
+      })
+      .error(function (response){
+      });
+      
+      
+    
 });
 

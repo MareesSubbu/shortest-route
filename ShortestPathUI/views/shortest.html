@@ -9,38 +9,60 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body ng-app="ShortestPathApp" ng-controller="ShortestPathController" style="background:#F4F4F4;font-family: Gravur;margin:0 auto;background-image: url('./bg.jpg');background-repeat: no-repeat;background-position: top; background-size: cover;">
-<h1><center>Optimal Path Between Different Cities</center></h1>
+
+<style>
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #999999;
+    color: white;
+}
+p.a {
+    font-family: "Times New Roman", Times, serif;
+}
+
+p.b {
+    font-style: oblique;
+}
+</style>
+<body ng-app="ShortestPathApp" ng-controller="ShortestPathController" style="background:#F4F4F4;font-family: Gravur;margin:0 auto;background-image: url('./bg.png');background-repeat: no-repeat;background-position: top; background-size: cover;">
+<h1><font face="verdana" color="#008ae6"><center>Optimal Path Between Different Cities</center></font></h1>
 </body>
 
 <div class="container">
   <form action="">
-  <div class="row" style="margin-top:4em;">
+
   <div class="col-md-3">
+ 
+
+</div>
+  <div class="col-md-offset-1 col-md-10">
   <div class="panel panel-info">
-<div class="panel-body"><h2 class="text-primary">Sample Input Format</h2>
+  <div class="panel-body"><h2 class="text-primary"></h2>
     <div class="form-group">
-      <textarea rows="20" cols="50" readonly  ng-model="demo" class="form-control"></textarea>
+      <textarea rows="18" cols="40" readonly  ng-model="demo" class="form-control"></textarea>
     </div>
-	
-</div>
-</div>
-
-
-</div>
-  <div class="col-md-offset-1 col-md-4">
-  <div class="panel panel-info">
-  <div class="panel-body"><h2 class="text-primary">Shortest Path</h2>
     <div class="form-group">
-      <label>Enter number of cities:</label>
+      <label><font face="verdana" color="#008ae6">Enter number of cities</font></label>
       <input type="text" ng-model="shortest.numberOfCities" class="form-control">
     </div>
     <div class="form-group">
-      <label for="Enter Floor">Enter distance between cities:</label>
+      <label for="Enter Floor" class=b><font face="verdana" color="#008ae6">Enter distance between cities</font></label>
       <textarea rows="5" cols="30"  ng-model="shortest.edgeWeights" class="form-control"></textarea>
     </div>
 	<div class="form-group">
-      <label for="Enter Slot">Enter the origin city: (Starts from 1)</label>
+      <label for="Enter Slot" class=b><font face="verdana" color="#008ae6">Enter the origin city (Starts from 1)</font></label>
       <input type="text"  ng-model="shortest.orgin" class="form-control">
     </div>
 	<div align="center">
@@ -48,18 +70,48 @@
 	</div>
 	</div>
 </div>
-</div>
-
- <div class="col-md-offset-1 col-md-3">
-  <div class="panel panel-info">
-  <div class="panel-body"><h2 class="text-primary">Result</h2>
+ <div class="panel panel-info">
+  <div class="panel-body"><h2 class="text-primary"> <font face="verdana" color="#008ae6">Best Route</font></h2>
   
     <div class="form-group">
-      <textarea rows="5" cols="30"  ng-model="result" class="form-control"></textarea>
+      <textarea rows="3" cols="20"  ng-model="result" class="form-control"></textarea>
     </div>
 	
 </div>
 </div>
+<div class="panel panel-info">
+  <div class="panel-body"><h2 class="text-primary"> <font face="verdana" color="#008ae6"><center>Old Results</center></font></h2>
+  
+   
+        
+      <table border="1">
+       <tbody>
+        <tr>
+    		<th>Id</th>
+    		<th>No.Of Cities</th>
+    		<th>Distance</th>
+    		<th>OrginPoint</th>
+    		<th>Result</th>
+ 		 </tr>
+		  <tr ng-repeat="value in data">
+		 
+		    <td> Id-{{value.id}} </td>
+            <td> {{value.numberOfCities}} </td>
+            <td> {{value.edgeWeights}} </td>
+            <td> {{value.orgin}} </td>
+            <td> {{value.result}} </td>
+		  </tr>
+		  </tbody>
+  	</table>
+
+    
+	
+</div>
+</div>
+</div>
+
+ <div class="col-md-offset-1 col-md-3">
+ 
 
 
 </div>
